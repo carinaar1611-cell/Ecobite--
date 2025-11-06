@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ecobites — Rastreabilidade</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-[#f0fff4] to-white text-stone-800">
+
+  <header class="bg-white shadow sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto p-4 flex justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">E</div>
+        <span class="font-semibold">Ecobites</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <section class="bg-white rounded-2xl p-8 shadow">
+      <h1 class="text-3xl font-extrabold text-emerald-700">Rastreabilidade</h1>
+      <p class="mt-3 text-stone-700">Insere o código do lote que encontras no rótulo (ex.: <strong>EB2025-0034</strong>) para ver a origem, análises e impacto.</p>
+
+      <div class="mt-6 grid md:grid-cols-3 gap-6 items-start">
+        <div class="md:col-span-2">
+          <label class="text-sm">Código do lote</label>
+          <input id="lotInput" class="w-full mt-2 p-3 border rounded-lg" placeholder="Ex.: EB2025-0034" />
+          <div class="mt-4">
+            <button id="checkBtn" class="bg-emerald-700 text-white px-4 py-2 rounded-lg">Verificar lote</button>
+            <button id="demoBtn" class="ml-2 px-4 py-2 border rounded-lg">Exemplo: EB2025-0034</button>
+          </div>
+
+          <div id="result" class="mt-6 hidden bg-gray-50 p-4 rounded-lg border">
+            <!-- Result will be injected here -->
+          </div>
+        </div>
+
+        <div class="bg-emerald-50 p-4 rounded-lg border">
+          <h4 class="font-semibold text-emerald-700">Como funciona</h4>
+          <ol class="list-decimal ml-6 mt-2 text-sm text-stone-700">
+            <li>O QR na embalagem aponta para esta página ou para a página específica do lote.</li>
+            <li>Consulta o registo: origem, peso recolhido, análises, ONG parceira.</li>
+            <li>Dados auditáveis e PDF do certificado disponíveis.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-8 text-center text-sm text-stone-600 border-t">
+    © Ecobites 2025
+  </footer>
+
+  <script>
+    // exemplo de base de dados simples (simulação)
+    const DB = {
+      "EB2025-0034": {
+        lote: "EB2025-0034",
+        producao: "12/03/2025",
+        origem: [
+          {fornecedor: "Cooperativa Serra Verde", itens: "Aveia (30kg), Maçã (12kg)"},
+          {fornecedor: "Hortas Urbanas Lisboa", itens: "Cenoura (23kg)"}
+        ],
+        totalReaproveitadoKg: 65,
+        co2EvitadoKg: 120,
+        analises: [
+          {tipo: "Microbiologia", resultado: "Aprovado (LabVet Lisboa 2025/034)"},
+          {tipo: "Nutrição", resultado: "Proteína 24% • Fibra 5% • Gordura 10%"}
+        ],
+        ong: "Animais com Futuro (12 cães alimentados)"
+      },
+      "EB2025-0101": {
+        lote: "EB2025-0101",
+        producao: "02/05/2025",
+        origem: [
+          {fornecedor: "Mercado do Bolhão", itens: "Pão integral (40kg)"},
+          {fornecedor: "Cooperativa Vale Verde", itens: "Couve (20kg)"}
+        ],
+        totalReaproveitadoKg: 60,
+        co2EvitadoKg: 105,
+        analises: [{tipo: "Microbiologia", resultado: "Aprovado"}],
+        ong: "Refugio do Porto (20 refeições)"
+      }
+    };
+
+    function renderResult(data) {
+      return `
+        <h3 class="text-xl font-semibold text-emerald-700">${data.lote} — Produção: ${data.producao}</h3>
+        <p class="mt-2 text-sm text-stone-700"><strong>Total reaproveitado:</strong> ${data.totalReaproveitadoKg} kg</p>
+        <p class="text-sm text-stone-700"><strong>CO₂ evitado (estim.):</strong> ${data.co2EvitadoKg} kg</p>
+
+        <div class="mt-3">
+          <strong class="text-sm">Origem:</strong>
+          <ul class="list-disc ml-6 text-sm mt-2">
+            ${data.origem.map(o => `<li><strong>${o.fornecedor}:</strong> ${o.itens}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="mt-3">
+          <strong class="text-sm">Análises:</strong>
+          <ul class="list-disc ml-6 text-sm mt-2">
+            ${data.analises.map(a => `<li><strong>${a.tipo}:</strong> ${a.resultado}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="mt-3 text-sm">
+          <strong>Impacto social:</strong> ${data.ong}
+        </div>
+
+        <div class="mt-4">
+          <a href="#" class="px-3 py-2 bg-emerald-700 text-white rounded">Baixar certificado (PDF)</a>
+        </div>
+      `;
+    }
+
+    document.getElementById('checkBtn').addEventListener('click', () => {
+      const code = document.getElementById('lotInput').value.trim().toUpperCase();
+      const resultEl = document.getElementById('result');
+      if (!code) {
+        alert('Insere um código de lote (ex.: EB2025-0034)');
+        return;
+      }
+      if (DB[code]) {
+        resultEl.innerHTML = renderResult(DB[code]);
+        resultEl.classList.remove('hidden');
+      } else {
+        resultEl.innerHTML = `<p class="text-sm text-stone-700">Lote não encontrado no registo público. Contacte info@ecobites.pt para verificação.</p>`;
+        resultEl.classList.remove('hidden');
+      }
+    });
+
+    document.getElementById('demoBtn').addEventListener('click', () => {
+      document.getElementById('lotInput').value = 'EB2025-0034';
+      document.getElementById('checkBtn').click();
+    });
+  </script>
+</body>
+</html>
