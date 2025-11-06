@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ecobites — Do Excedente à Tigela</title>
+  <meta name="description" content="Ecobites transforma excedentes alimentares em ração e produtos sustentáveis para pets. Rastreabilidade, ciência e impacto social." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --brand-green: #059669;
+      --accent-yellow: #fbbf24;
+      --bg-cream: #fff7ed;
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#f0fdf4] to-[#ffffff] text-stone-800 antialiased">
+
+  <!-- NAV -->
+  <header class="fixed w-full z-40 bg-white/60 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-green-700 flex items-center justify-center text-white font-extrabold">E</div>
+        <div>
+          <h1 class="text-lg font-bold leading-tight">Ecobites</h1>
+          <p class="text-xs text-stone-500 -mt-1">Do excedente à tigela</p>
+        </div>
+      </a>
+      <nav class="hidden md:flex gap-6 items-center">
+        <a href="about.html" class="text-sm hover:text-emerald-700">Quem Somos</a>
+        <a href="mission.html" class="text-sm hover:text-emerald-700">Missão</a>
+        <a href="products.html" class="text-sm hover:text-emerald-700">Produtos</a>
+        <a href="trace.html" class="text-sm hover:text-emerald-700">Rastreabilidade</a>
+        <a href="contact.html" class="text-sm bg-amber-300 text-emerald-800 px-3 py-2 rounded-md font-semibold">Contacto</a>
+      </nav>
+      <button id="mobileBtn" class="md:hidden p-2">☰</button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden fixed top-16 left-0 right-0 bg-white z-30 shadow-md">
+    <div class="max-w-6xl mx-auto p-4 flex flex-col">
+      <a href="about.html" class="py-2 border-b">Quem Somos</a>
+      <a href="mission.html" class="py-2 border-b">Missão</a>
+      <a href="products.html" class="py-2 border-b">Produtos</a>
+      <a href="trace.html" class="py-2 border-b">Rastreabilidade</a>
+      <a href="contact.html" class="py-2 font-semibold">Contacto</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <main class="pt-24">
+    <section class="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-emerald-700 leading-tight">Alimenta o teu amigo. Salva comida. Salva o planeta.</h2>
+        <p class="mt-4 text-stone-700 text-lg">Ecobites transforma excedentes alimentares em ração, snacks e brinquedos sustentáveis. Rastreabilidade total, formulações validadas por veterinários e impacto social real.</p>
+
+        <div class="mt-6 flex gap-3">
+          <a href="products.html" class="inline-block bg-emerald-700 text-white px-5 py-3 rounded-lg font-semibold shadow">Ver Produtos</a>
+          <a href="trace.html" class="inline-block border border-emerald-700 text-emerald-700 px-5 py-3 rounded-lg font-semibold">Rastreie um Lote</a>
+        </div>
+
+        <div class="mt-8 grid grid-cols-3 gap-3 text-sm">
+          <div class="p-4 bg-white rounded-lg shadow">
+            <strong class="text-emerald-700">100% rastreável</strong>
+            <p class="text-stone-500 mt-1">QR por lote</p>
+          </div>
+          <div class="p-4 bg-white rounded-lg shadow">
+            <strong class="text-emerald-700">Formulado por vets</strong>
+            <p class="text-stone-500 mt-1">Segurança e nutrição</p>
+          </div>
+          <div class="p-4 bg-white rounded-lg shadow">
+            <strong class="text-emerald-700">Parcerias locais</strong>
+            <p class="text-stone-500 mt-1">Produtores & ONG</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="rounded-3xl overflow-hidden shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1507149833265-60c372daea22?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=18d0ed3d5d5b1b6c8fbd3b2ad8b7d9ce" alt="Cão feliz" class="w-full h-96 object-cover">
+        </div>
+        <div class="absolute -bottom-6 left-6 bg-white/90 backdrop-blur-md rounded-xl p-4 shadow">
+          <p class="text-sm text-stone-600">Exemplo: Lote EB2025-0034 • 65 kg salvos • CO₂ evitado: 120 kg</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="max-w-6xl mx-auto px-6 py-10">
+      <div class="bg-gradient-to-r from-[#ecfccb] to-white p-8 rounded-2xl shadow-lg">
+        <h3 class="text-2xl font-bold text-emerald-800">Transparência com prova</h3>
+        <p class="mt-3 text-stone-700">Publicamos relatórios por lote, resultados laboratoriais e parcerias. Acreditamos que a sustentabilidade é mensurável — não um slogan.</p>
+        <div class="mt-6 flex gap-4">
+          <a href="trace.html" class="px-4 py-2 bg-white text-emerald-700 rounded-lg font-semibold shadow">Rastreabilidade</a>
+          <a href="about.html" class="px-4 py-2 border border-emerald-700 text-emerald-700 rounded-lg">Quem somos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-6 shadow">
+        <h4 class="font-semibold text-emerald-700">Rações circulares</h4>
+        <p class="mt-2 text-sm text-stone-600">Formuladas com excedentes controlados e complementos nutritivos.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow">
+        <h4 class="font-semibold text-emerald-700">Brinquedos reciclados</h4>
+        <p class="mt-2 text-sm text-stone-600">Têxteis reaproveitados, enchimentos ecológicos e design seguro.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow">
+        <h4 class="font-semibold text-emerald-700">Snacks naturais</h4>
+        <p class="mt-2 text-sm text-stone-600">Frutas e cereais desidratados com controle de qualidade.</p>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="max-w-6xl mx-auto px-6 py-12 rounded-2xl">
+      <div class="bg-gradient-to-r from-emerald-600 to-green-800 text-white p-8 rounded-2xl shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
+        <div>
+          <h4 class="text-2xl font-bold">Queres ver um lote ao vivo?</h4>
+          <p class="mt-2 text-sm">Escaneia o QR presente na embalagem ou clica em “Rastreie um Lote”.</p>
+        </div>
+        <div>
+          <a href="trace.html" class="bg-white text-emerald-800 px-5 py-3 rounded-lg font-semibold shadow">Rastreie um Lote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-12 py-8 bg-white border-t">
+    <div class="max-w-6xl mx-auto px-6 text-center text-sm text-stone-600">
+      © 2025 Ecobites • Transparência, ciência e economia circular • <a href="contact.html" class="text-emerald-700 hover:underline">Contacte-nos</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobileBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
